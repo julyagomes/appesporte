@@ -4,21 +4,21 @@ import {
     ComponentButtonSlider, ComponentListMarker, ComponentTitleSlider 
 } from '../../components';
 import { styles } from './styles';
-export function Slider1({setPageI}: IPage) {
-    const slide1 = require("../../assets/slide1.png")
-    const slide1Texts =  [
-        {id: '1', text: 'Tênis'},
-        {id: '2', text: 'Bolas de basquete'},
-        {id: '3', text: 'Cestas'},
-        {id: '4', text: 'Camisetas regata'},
+export function Slider2({setPageI}: IPage) {
+    const slide2 = require("../../assets/slide2.png")
+    const slide2Texts =  [
+        {id: '1', text: 'Chuteiras'},
+        {id: '2', text: 'Bolas de futebol'},
+        {id: '3', text: 'Camisetas de time'},
+        {id: '4', text: 'Meião'},
         {id: '5', text: 'Outros'},
     ]
     return (
-        <ImageBackground source={slide1} style={styles.container}>
+        <ImageBackground source={slide2} style={styles.container}>
             <View style={styles.panel}>
-                <ComponentTitleSlider titleI='BASQUETE'/>
+                <ComponentTitleSlider titleI='FUTEBOL'/>
                 <FlatList
-                    data={slide1Texts}
+                    data={slide2Texts}
                     renderItem={({item})} =>
                         <ComponentListMarker key={ClipboardItem.id} textMarker={ClipboardItem.text} />
                         }
