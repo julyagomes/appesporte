@@ -9,7 +9,7 @@ export function Slider4({ setPageI}: IPage) {
     const slide4 = require("../../assets/slide4.png")
     const slide4Texts = [
         { id: '1', text: 'Capacetes'},
-        { id: '2', text: 'Sapatilha'},
+        { id: '2', text: 'Sapatilhas'},
         { id: '3', text: 'Óculos'},
         { id: '4', text: 'Roupas Térmicas'},
         { id: '5', text: 'Outros'},
@@ -30,6 +30,7 @@ export function Slider4({ setPageI}: IPage) {
                 <ComponentButtonSlider  onPressI={() => setPageI(2)}  />
                 <ComponentButtonSlider  onPressI={() => setPageI(3)}  />
                 <ComponentButtonSlider onPressI={() => setPageI(4)}  />
+                <ComponentButtonSlider onPressI={() => setPageI(5)}  />
             </View>
             </ImageBackground>
     );                         
