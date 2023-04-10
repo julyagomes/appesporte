@@ -1,9 +1,10 @@
 import React from "react"
 import {View, KeyboardAvoidingView, Text} from "react-native"
 import {styles} from './styles'
-import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons'; 
+import { MaterialCommunityIcons, MaterialIcons, Entypo } from '@expo/vector-icons'; 
 import { colors } from "../../styles/colors";
 import {TextInput} from "react-native-gesture-handler";
+import {ComponentButtonInterface} from "../../components"
 
 export function Login(){
     return (
@@ -15,11 +16,23 @@ export function Login(){
                 <TextInput
                     placeholder="email"
                     placeholderTextColor={colors.primary}
-                    keyboardType="email-adress"
+                    keyboardType="email-address"
                     autoCapitalize="none"
                     style={styles.input}
                 />
               </View>
+              <View style={styles.formRow}>
+              <Entypo name="key" style={styles.icon} />
+              <TextInput
+                placeholder="senha"
+                placeholderTextColor={colors.primary}
+                secureTextEntry={true}
+                autoCapitalize="none"
+                style={styles.input}  
+                />
+                </View>
+                <ComponentButtonInterface title="Entrar" type="primary" onPressI={() => {console.log('Entrar')}} />
+                <ComponentButtonInterface title="Cadastrar" type="fourth" onPressI={() => {console.log('Cadastrar')}} />
             </KeyboardAvoidingView>
         </View>
     )
