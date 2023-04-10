@@ -5,8 +5,9 @@ import { MaterialCommunityIcons, MaterialIcons, Entypo } from '@expo/vector-icon
 import { colors } from "../../styles/colors";
 import {TextInput} from "react-native-gesture-handler";
 import {ComponentButtonInterface} from "../../components"
+import {LoginTypes} from "../../navigations/login.navigation"
 
-export function Login(){
+export function Login({navigation}: LoginTypes){
     return (
         <View style={styles.container}>
             <KeyboardAvoidingView>
@@ -31,8 +32,8 @@ export function Login(){
                 style={styles.input}  
                 />
                 </View>
-                <ComponentButtonInterface title="Entrar" type="primary" onPressI={() => {console.log('Entrar')}} />
-                <ComponentButtonInterface title="Cadastrar" type="fourth" onPressI={() => {console.log('Cadastrar')}} />
+                <ComponentButtonInterface title="Entrar" type="primary" onPressI={() => {navigation.navigate('Entrar')}} />
+                <ComponentButtonInterface title="Cadastrar" type="primary" onPressI={() => {navigation.navigate('Cadastrar')}} />
             </KeyboardAvoidingView>
         </View>
     )

@@ -5,8 +5,9 @@ import { Entypo, MaterialCommunityIcons, MaterialIcons, FontAwesome5 } from '@ex
 import { TextInput } from "react-native-gesture-handler";
 import { colors } from "../../styles/colors";
 import {ComponentButtonInterface} from "../../components"
+import { LoginTypes } from "../../navigations/login.navigation";
 
-export function Cadastar() {
+export function Cadastrar({navigation}: LoginTypes) {
     return (
         <View style={styles.container}>
            <KeyboardAvoidingView>
@@ -42,8 +43,8 @@ export function Cadastar() {
               style={styles.input}  
               />
               </View>
-              <ComponentButtonInterface title="Entrar" type="primary" onPressI={() => {console.log('Entrar')}} />
-              <ComponentButtonInterface title="Login" type="primary" onPressI={() => {console.log('Login')}} />
+              <ComponentButtonInterface title="Salvar" type="primary" onPressI={() => {console.log('Salvar')}} />
+              <ComponentButtonInterface title="Voltar" type="primary" onPressI={() => {navigation.navigate('Login')}} />
            </KeyboardAvoidingView>
         </View>
     )

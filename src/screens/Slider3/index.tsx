@@ -2,7 +2,7 @@ import React from 'react';
 import { FlatList, ImageBackground, View, Text } from 'react-native';
 import { IPage} from '../../../App';
 import {
-    ComponentButtonSlider, ComponentListMarker, ComponentTitleSlider
+    ComponentButtonSlider, ComponentListMarker, ComponentTitleSlider, ComponentButtonInterface
 } from '../../components';
 import { styles } from './styles';
 export function Slider3({ setPageI}: IPage) {
