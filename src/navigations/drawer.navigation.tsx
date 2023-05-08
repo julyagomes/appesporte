@@ -10,12 +10,15 @@ type DrawerScreenNavigationProp = DrawerNavigationProp<DrawerParamList, 'Perfil'
 export type DrawerTypes = {
   navigation: DrawerScreenNavigationProp
 }
-export function TabNavigation() {
+export function DrawerNavigation() {
   const Drawer = createDrawerNavigator<DrawerParamList>();
   return (
     <Drawer.Navigator 
       screenOptions={{
-        
+        drawerStyle: {
+          backgroundColor: colors.primary
+        },
+        drawerActiveTintColor: colors.white
       }}
     >
       <Drawer.Screen name="Perfil" component={ScreenPerfil} 
