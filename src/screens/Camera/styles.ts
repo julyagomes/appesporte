@@ -1,4 +1,5 @@
 import {StyleSheet, Dimensions} from 'react-native'
+import { colors } from '../../styles/colors';
     export const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -26,5 +27,10 @@ import {StyleSheet, Dimensions} from 'react-native'
     img: {
       widht: Dimensions.get('window').width *0.7,
       height: Dimensions.get('window').width *0.7
-    }
+    },
+    icon:{
+      fontSize: 28,
+      color: colors.black,
+      padding: 5
+  }
   });
