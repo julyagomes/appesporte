@@ -6,6 +6,7 @@ import { styles } from './styles';
 import {AntDesign} from '@expo/vector-icons';
 import * as ImagePicker from "expo-image-picker";
 import * as MediaLibrary from "expo-media-library"
+import React from 'react';
 interface IPhoto {
     height: string
     uri: string
@@ -80,40 +81,25 @@ export function CameraScreen() {
 
   return (
     <View style={styles.container}>
-      {takePhoto ? (
-        <Camera style={styles.camera} type={type} ref={ref}>
-        <TouchableOpacity onPress={toggleCameraType}>
-        <AntDesign name="sync" style={styles.icon} />
-        </TouchableOpacity>
-        </Camera>
-        ):(
-        <ComponentButtonInterface title='Tirar Foto' type='secondary' onPressI={takePicture}/>
-        <ComponentButtonInterface title='Salvar Imagem' type='secondary' onPressI={savePhoto}/>
-        <ComponentButtonInterface title='Abrir Imagem' type='secondary' onPressI={pickImage}/>
-        
-        {photo && photo.uri && (
-            <Image source={{ uri: photo.uri }} style={styles.img} />
-        )
-        )}
-    </View>
-  );
-
- /*return (
-  <>
   {takePhoto ? (
     <Camera style={styles.camera} type={type} ref={ref}>
-        <TouchableOpacity onPress={toggleCameraType}>
+      <TouchableOpacity onPress={toggleCameraType}>
         <AntDesign name="sync" style={styles.icon} />
-        </TouchableOpacity>
+      </TouchableOpacity>
     </Camera>
-  ):(
-    <ComponentButtonInterface title='Tirar Foto' type='secondary' onPressI={takePicture}/>
-    <ComponentButtonInterface title='Salvar Imagem' type='secondary' onPressI={savePhoto}/>
-    <ComponentButtonInterface title='Abrir Imagem' type='secondary' onPressI={pickImage}/>
-        {photo && photo.uri && (
-            <Image source={{ uri: photo.uri }} style={styles.img} /> 
+  ) : (
+    <>
+      <ComponentButtonInterface title='Tirar Foto' type='secondary' onPressI={takePicture} />
+      <ComponentButtonInterface title='Salvar Imagem' type='secondary' onPressI={savePhoto} />
+      <ComponentButtonInterface title='Abrir Imagem' type='secondary' onPressI={pickImage} />
+
+      {photo && photo.uri && (
+        <Image source={{ uri: photo.uri }} style={styles.img} />
+      )}
+    </>
   )}
-  </>
- )
- */
+</View>
+
+  );
+
 }
