@@ -32,5 +32,8 @@ import { colors } from '../../styles/colors';
       fontSize: 28,
       color: colors.black,
       padding: 5
+  },
+  sorriso: {
+    flex: 1
   }
   });
