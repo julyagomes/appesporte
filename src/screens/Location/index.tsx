@@ -6,7 +6,9 @@ import MapView, { Region, Marker, Polyline } from 'react-native-maps';
 import { colors } from '../../styles/colors';
 import {API_GOOGLE} from '@env'
 import * as Autocomplete from 'react-native-google-places-autocomplete'
-import * as Directions from 'react-native-maps-directions'
+import MapViewDirections, * as Directions from 'react-native-maps-directions'
+import { GooglePlaceData, GooglePlaceDetail, GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 export function LocationScreen() {
   const [location, setLocation] = useState<Location.LocationObject | null>(null);
@@ -61,7 +63,25 @@ export function LocationScreen() {
         subscription.remove()
       }
     }
-  }, [])
+  }, []);
+  async function handleDestination(data: GooglePlaceData, details: GooglePlaceDetail | null) {
+    if (details) {
+      setDestination({
+        latitude: details?.geometry.location.lat,
+        longitude: details?.geometry.location.lng,
+        latitudeDelta: 0.004,
+        longitudeDelta: 0.004
+      })
+      if (marker) {
+        setMarker([...marker, {
+          latitude: details?.geometry.location.lat,
+          longitude: details?.geometry.location.lng,
+          latitudeDelta: 0.004,
+          longitudeDelta: 0.004
+        }])
+      }
+    }
+  }
 
   let text = 'Waiting..';
   if (errorMsg) {
@@ -71,15 +91,50 @@ export function LocationScreen() {
   }
 return(
     <View style={styles.container}>
+        <GooglePlacesAutocomplete
+        styles={{ container: styles.searchContainer, textInput: styles.searchInput }}
+        placeholder="Para onde vamos?"
+        fetchDetails={true}
+        GooglePlacesDetailsQuery={{ fields: "geometry" }}
+        enablePoweredByContainer={false}
+        query={{
+          key: API_GOOGLE,
+          language: 'pt-BR'
+        }}
+        onFail={setErrorMsg}
+        onPress={handleDestination}
+      />
         {region ? (
-            <MapView region={region} style={styles.map} showsUserLocation={true}>
+            <MapView region={region} style={styles.map} ref={mapRef} showsUserLocation={true} >
                 {coords && <Polyline 
                 coordinates={coords}
                 strokeColor={colors.black}
                 strokeWidth={7}                
                 />}
+                {destination && (
+                <MapViewDirections
+                  origin={region}
+                  destination={destination}
+                  apikey={API_GOOGLE}
+                  strokeColor={colors.black}
+                  strokeWidth={7}
+                  lineDashPattern={[0]}
+                  onReady={(result) => {
+                    mapRef.current?.fitToCoordinates(result.coordinates, {
+                      edgePadding: {
+                        top: 24,
+                        bottom: 24,
+                        left: 24,
+                        right: 24
+                      }
+                    })
+                  }}
+                />
+              )}
                 {marker && marker.map((i) => (
-                    <Marker key={i.latitude} coordinate={i}/>
+                    <Marker key={i.latitude} coordinate={i}>
+                    <MaterialCommunityIcons name="cellphone-marker" sizze={48} color={colors.black} />
+                    </Marker>
                 ))}
             </MapView>
         ) : (
