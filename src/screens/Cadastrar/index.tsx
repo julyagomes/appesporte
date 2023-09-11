@@ -45,7 +45,7 @@ export function Cadastrar({navigation}: LoginTypes) {
       } finally {
         setIsLoading(false)
       }
-    }
+    } 
     useEffect(() => {
       setTimeout(()=> {
         setIsLoading(false)
