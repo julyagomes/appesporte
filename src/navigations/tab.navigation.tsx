@@ -1,12 +1,13 @@
 import React from 'react';
 import { BottomTabNavigationProp, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import {ScreenPerfil, ScreenCamera, ScreenLocation} from "../screens"
+import {ScreenPerfil, ScreenCamera, ScreenLocation, ScreenAcelerometro} from "../screens"
 import { colors } from '../styles/colors';
 import { Ionicons, AntDesign, FontAwesome } from '@expo/vector-icons';
 type TabParamList ={
   Perfil: undefined
   Camera: undefined
   Location: undefined
+  Acelerometro: undefined
 }
 type TabScreenNavigationProp = BottomTabNavigationProp<TabParamList, 'Perfil'>
 export type TabTypes = {
@@ -46,6 +47,13 @@ export function TabNavigation() {
       )
      }}
     />
+    <Tab.Screen name="Acelerometro" component={ScreenAcelerometro} 
+      options={{
+        tabBarIcon: () => (
+        <AntDesign name="car" size={24} color="black"  />
+        )
+      }}
+      />
     </Tab.Navigator>
   );
 }
