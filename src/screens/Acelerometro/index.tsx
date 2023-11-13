@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View, Dimensions, Image } from 'react-native';
+import { Dimensions, Image, Text, TouchableOpacity, View } from 'react-native';
 import { Accelerometer } from 'expo-sensors';
 import { styles } from './styles';
 import { Subscription } from 'expo-notifications';
 
-export  function Acelerometro() {
+export function Acelerometro() {
   const [{ x, y, z }, setData] = useState({
     x: 0,
     y: 0,
@@ -31,13 +31,13 @@ export  function Acelerometro() {
 
   return (
     <View style={styles.container}>
-        <Image source={require("../../assets/estrada.gif")} style={styles.fundo} />
-        <Image source={require("../../assets/carro.png")} style={{
-            width: 70,
-            height: 50,
-            position: 'absolute',
-            left: (Dimensions.get("screen").width / 2.5) - (x * Dimensions.get("screen").width/3)
-        }} />
+      <Image source={require("../../assets/estrada.gif")} style={styles.fundo} />
+      <Image source={require("../../assets/carro.png")} style={{
+        width: 70,
+        height: 50,
+        position: 'absolute',
+        left: (Dimensions.get("screen").width / 2.5) - (x * Dimensions.get("screen").width / 3)
+      }} />
       <Text style={styles.text}>Accelerometer: (in gs where 1g = 9.81 m/s^2)</Text>
       <Text style={styles.text}>d: {(Dimensions.get("screen").width / 2).toFixed(4)}</Text>
       <Text style={styles.text}>x: {x.toFixed(4)}</Text>

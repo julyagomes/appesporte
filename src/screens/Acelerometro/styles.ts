@@ -1,7 +1,7 @@
-import { StyleSheet } from "react-native";
-import { colors } from "../../styles/colors";
+import { StyleSheet } from 'react-native'
+import { colors } from '../..//styles/colors';
 export const styles = StyleSheet.create({
-    container:{
+    container: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
@@ -19,13 +19,13 @@ export const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        color: colors.primary,
+        color: colors.thirdLight,
         padding: 10,
     },
     middleButton: {
         borderLeftWidth: 1,
         borderRightWidth: 1,
-        boderColor: colors.secondary
+        borderColor: colors.third,
     },
     fundo: {
         width: '100%'
